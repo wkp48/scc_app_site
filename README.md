@@ -81,6 +81,55 @@ APK 파일은 다음 중 하나의 방법으로 호스팅할 수 있습니다:
 
 `src/components/PatchNotes.jsx` 파일의 `patchNotes` 배열에 새로운 패치노트를 추가하세요.
 
+## 배포
+
+### 방법 1: Vercel 배포 (권장 - 가장 간단)
+
+1. [Vercel](https://vercel.com)에 가입/로그인
+2. "New Project" 클릭
+3. GitHub 저장소 선택 (`wkp48/scc_app_site`)
+4. 프로젝트 설정:
+   - Framework Preset: Vite
+   - Build Command: `npm run build`
+   - Output Directory: `dist`
+5. "Deploy" 클릭
+
+배포가 완료되면 자동으로 URL이 생성됩니다 (예: `https://scc-app-site.vercel.app`)
+
+**장점:**
+- 무료
+- 자동 배포 (GitHub push 시 자동 업데이트)
+- HTTPS 자동 설정
+- 매우 빠른 배포 속도
+
+### 방법 2: GitHub Pages 배포
+
+1. GitHub 저장소 설정에서 Pages 활성화:
+   - Settings → Pages
+   - Source: GitHub Actions 선택
+
+2. 코드를 GitHub에 push하면 자동으로 배포됩니다:
+   ```bash
+   git add .
+   git commit -m "배포 설정 추가"
+   git push origin main
+   ```
+
+3. 배포 완료 후 사이트 주소:
+   - `https://wkp48.github.io/scc_app_site/`
+
+**참고:** GitHub Pages 사용 시 `vite.config.js`의 `base`를 `/scc_app_site/`로 변경해야 할 수 있습니다.
+
+### 방법 3: Netlify 배포
+
+1. [Netlify](https://www.netlify.com)에 가입/로그인
+2. "Add new site" → "Import an existing project"
+3. GitHub 저장소 선택
+4. 빌드 설정:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+5. "Deploy site" 클릭
+
 ## 기술 스택
 
 - React 18
