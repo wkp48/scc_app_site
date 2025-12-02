@@ -6,19 +6,27 @@ const DownloadSection = () => {
   // 방법 1: 환경 변수 사용 (.env 파일에 VITE_APK_URL=https://your-url.com/scc_app.apk)
   // 방법 2: 아래 URL을 직접 수정
   // public 폴더의 파일은 루트 경로로 접근 가능합니다
-  const APK_URL = import.meta.env.VITE_APK_URL || '/downloads/scc_app.apk'
+  // GitHub Pages의 경우 base 경로를 고려해야 합니다
+  const basePath = import.meta.env.BASE_URL || '/scc_app_site/'
+  const APK_URL = import.meta.env.VITE_APK_URL || `${basePath}downloads/scc_app.apk`
   
   // iOS App Store 링크를 여기에 설정하세요
   const IOS_STORE_URL = import.meta.env.VITE_IOS_URL || 'https://apps.apple.com/app/id123456789'
 
   const handleAndroidDownload = () => {
     // APK 파일 직접 다운로드
+    // 방법 1: 직접 다운로드 링크 생성
     const link = document.createElement('a')
     link.href = APK_URL
     link.download = 'scc_app.apk'
+    link.target = '_blank'
+    link.rel = 'noopener noreferrer'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
+    
+    // 방법 2: 새 창에서 열기 (일부 브라우저에서 필요)
+    // window.open(APK_URL, '_blank')
   }
 
   const handleIOSDownload = () => {
