@@ -14,19 +14,33 @@ const DownloadSection = () => {
   const IOS_STORE_URL = import.meta.env.VITE_IOS_URL || 'https://apps.apple.com/app/id123456789'
 
   const handleAndroidDownload = () => {
-    // APK 파일 직접 다운로드
-    // 방법 1: 직접 다운로드 링크 생성
-    const link = document.createElement('a')
-    link.href = APK_URL
-    link.download = 'scc_app.apk'
-    link.target = '_blank'
-    link.rel = 'noopener noreferrer'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-    
-    // 방법 2: 새 창에서 열기 (일부 브라우저에서 필요)
-    // window.open(APK_URL, '_blank')
+    try {
+      // APK 파일 직접 다운로드
+      const link = document.createElement('a')
+      link.href = APK_URL
+      link.download = 'scc_app.apk'
+      link.style.display = 'none'
+      document.body.appendChild(link)
+      link.click()
+      
+      // 일정 시간 후 링크 제거
+      setTimeout(() => {
+        document.body.removeChild(link)
+      }, 100)
+      
+      // 다운로드가 시작되지 않으면 새 창에서 열기
+      setTimeout(() => {
+        const testLink = document.createElement('a')
+        testLink.href = APK_URL
+        testLink.target = '_blank'
+        testLink.rel = 'noopener noreferrer'
+        testLink.click()
+      }, 500)
+    } catch (error) {
+      console.error('다운로드 오류:', error)
+      // 오류 발생 시 직접 링크로 열기
+      window.open(APK_URL, '_blank')
+    }
   }
 
   const handleIOSDownload = () => {
