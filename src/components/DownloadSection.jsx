@@ -31,10 +31,16 @@ const DownloadSection = () => {
   
   const APK_URL = getAPKUrl()
   
+  // 디버깅: 콘솔에 URL 출력
+  console.log('APK URL:', APK_URL)
+  console.log('Current pathname:', window.location.pathname)
+  console.log('BASE_URL:', import.meta.env.BASE_URL)
+  
   // iOS App Store 링크를 여기에 설정하세요
   const IOS_STORE_URL = import.meta.env.VITE_IOS_URL || 'https://apps.apple.com/app/id123456789'
 
   const handleAndroidDownload = () => {
+    console.log('다운로드 버튼 클릭됨, URL:', APK_URL)
     try {
       // APK 파일 직접 다운로드
       const link = document.createElement('a')
