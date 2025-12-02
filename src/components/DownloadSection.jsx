@@ -7,7 +7,20 @@ const DownloadSection = () => {
   // 방법 2: 아래 URL을 직접 수정
   // public 폴더의 파일은 루트 경로로 접근 가능합니다
   // GitHub Pages의 경우 base 경로를 고려해야 합니다
-  const basePath = import.meta.env.BASE_URL || '/scc_app_site/'
+  const getBasePath = () => {
+    // Vite의 BASE_URL 사용 (빌드 시 자동 설정됨)
+    if (import.meta.env.BASE_URL) {
+      return import.meta.env.BASE_URL
+    }
+    // GitHub Pages의 경우
+    if (window.location.pathname.includes('/scc_app_site/')) {
+      return '/scc_app_site/'
+    }
+    // 로컬 개발 환경
+    return '/'
+  }
+  
+  const basePath = getBasePath()
   const APK_URL = import.meta.env.VITE_APK_URL || `${basePath}downloads/scc_app.apk`
   
   // iOS App Store 링크를 여기에 설정하세요
