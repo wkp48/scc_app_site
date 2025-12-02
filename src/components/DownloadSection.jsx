@@ -5,7 +5,8 @@ const DownloadSection = () => {
   // APK 파일 URL을 여기에 설정하세요
   // 방법 1: 환경 변수 사용 (.env 파일에 VITE_APK_URL=https://your-url.com/scc_app.apk)
   // 방법 2: 아래 URL을 직접 수정
-  const APK_URL = import.meta.env.VITE_APK_URL || 'https://your-apk-url-here.com/scc_app.apk'
+  // public 폴더의 파일은 루트 경로로 접근 가능합니다
+  const APK_URL = import.meta.env.VITE_APK_URL || '/downloads/scc_app.apk'
   
   // iOS App Store 링크를 여기에 설정하세요
   const IOS_STORE_URL = import.meta.env.VITE_IOS_URL || 'https://apps.apple.com/app/id123456789'
