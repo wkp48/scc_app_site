@@ -1,0 +1,200 @@
+.patch-notes {
+  padding: 3rem 0;
+}
+
+.patch-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.patch-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.patch-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.patch-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.patch-item {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.patch-item:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.patch-header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.patch-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.patch-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.patch-badge.major {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.patch-badge.minor {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.patch-version-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.patch-version {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.patch-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.patch-toggle {
+  font-size: 1.2rem;
+  color: #999;
+  transition: transform 0.3s ease;
+}
+
+.patch-item.expanded .patch-toggle {
+  transform: rotate(90deg);
+}
+
+.patch-content {
+  padding: 0 2rem 1.5rem 2rem;
+  border-top: 1px solid #eee;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.patch-changes {
+  list-style: none;
+  padding-top: 1rem;
+}
+
+.patch-change-item {
+  padding: 0.8rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.patch-change-item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .patch-title {
+    font-size: 2rem;
+  }
+  
+  .patch-subtitle {
+    font-size: 1rem;
+  }
+  
+  .patch-header {
+    padding: 1.2rem 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .patch-header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .patch-version-info {
+    width: 100%;
+  }
+  
+  .patch-toggle {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.2rem;
+  }
+  
+  .patch-content {
+    padding: 0 1.5rem 1.2rem 1.5rem;
+  }
+  
+  .patch-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .patch-title {
+    font-size: 1.6rem;
+  }
+  
+  .patch-version {
+    font-size: 1.1rem;
+  }
+  
+  .patch-change-item {
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+  }
+}
+

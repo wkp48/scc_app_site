@@ -1,0 +1,21 @@
+{
+  "name": "scc-app-download-page",
+  "version": "1.0.0",
+  "description": "세종충북도박문제예방치유센터 애플리케이션 다운로드 페이지",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "vite": "^5.0.0"
+  }
+}
