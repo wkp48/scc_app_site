@@ -110,15 +110,26 @@ npm run preview
 
 ## 배포
 
-### Vercel에 배포
+### 빠른 배포 (Vercel 추천) ⭐
 
-1. [Vercel](https://vercel.com)에 가입하고 프로젝트를 연결합니다.
-2. GitHub 저장소에 코드를 푸시합니다.
-3. Vercel이 자동으로 빌드하고 배포합니다.
+가장 간단하고 빠른 배포 방법:
 
-### 다른 플랫폼에 배포
+1. [Vercel](https://vercel.com) 접속
+2. GitHub 계정으로 로그인
+3. "Add New Project" 클릭
+4. 저장소 `wkp48/scc_app_site` 선택
+5. "Deploy" 버튼 클릭
+6. 약 1-2분 후 배포 완료! 🎉
 
-`npm run build` 명령어로 빌드한 후, `dist` 폴더의 내용을 웹 호스팅 서비스에 업로드하세요.
+**자동 배포:** GitHub에 푸시할 때마다 자동으로 재배포됩니다.
+
+📖 **자세한 배포 가이드:** [DEPLOYMENT.md](./DEPLOYMENT.md) 참고
+
+### 다른 배포 방법
+
+- **Netlify**: [DEPLOYMENT.md](./DEPLOYMENT.md) 참고
+- **GitHub Pages**: `.github/workflows/deploy.yml` 설정 파일이 이미 있습니다
+- **수동 배포**: `npm run build` 후 `dist` 폴더를 호스팅 서비스에 업로드
 
 ## 디렉토리 구조
 

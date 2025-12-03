@@ -1,6 +1,7 @@
 import './Hero.css';
 import { useState } from 'react';
 import versionInfoData from '../data/versionInfo.json';
+import appPreview from '../../assets/app_preview.jpeg';
 
 const Hero = () => {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -87,10 +88,11 @@ const Hero = () => {
           <div className="phone-mockup">
             <div className="phone-screen">
               <div className="app-preview">
-                <div className="preview-content">
-                  <h3>앱 미리보기</h3>
-                  <p>스마트폰에서 더 나은 경험을 제공합니다</p>
-                </div>
+                <img 
+                  src={appPreview} 
+                  alt="앱 미리보기" 
+                  className="app-preview-image"
+                />
               </div>
             </div>
           </div>
