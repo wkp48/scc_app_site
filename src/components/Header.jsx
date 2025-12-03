@@ -2,10 +2,15 @@ import './Header.css';
 import logo from '../../assets/logo.png';
 
 const Header = () => {
+  const handleLogoClick = () => {
+    window.location.hash = '';
+    window.scrollTo(0, 0);
+  };
+
   return (
     <header className="header">
       <div className="header-container">
-        <div className="logo-wrapper">
+        <div className="logo-wrapper" onClick={handleLogoClick}>
           <img src={logo} alt="세종충북도박문제예방치유센터" className="logo" />
         </div>
         <nav className="nav">
