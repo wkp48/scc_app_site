@@ -126,7 +126,7 @@ const Hero = () => {
               disabled={isIOSDownloading}
             >
               <img src={appleLogo} alt="iOS" className="btn-icon" />
-              {isIOSDownloading ? '다운로드 중...' : 'iOS IPA 다운로드'}
+              {isIOSDownloading ? '다운로드 중...' : 'iOS app 다운로드'}
             </button>
           </div>
           <div className="hero-info">
@@ -134,7 +134,7 @@ const Hero = () => {
               ⚠️ Android: 설치 시 "알 수 없는 소스" 허용이 필요할 수 있습니다
             </p>
             <p className="info-text">
-              ⚠️ iOS: IPA 파일 다운로드 후 설치 시 신뢰할 수 있는 개발자 설정이 필요할 수 있습니다
+              ⚠️ iOS: app 파일 다운로드 후 설치 시 신뢰할 수 있는 개발자 설정이 필요할 수 있습니다
             </p>
           </div>
         </div>

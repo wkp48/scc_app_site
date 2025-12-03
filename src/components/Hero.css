@@ -41,6 +41,7 @@
 }
 
 .download-btn {
+  flex: 1;
   padding: 1rem 2rem;
   font-size: 1.125rem;
   font-weight: 600;
@@ -49,6 +50,7 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -83,8 +85,8 @@
 }
 
 .btn-icon {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   flex-shrink: 0;
 }
