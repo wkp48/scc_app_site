@@ -65,6 +65,17 @@
   box-shadow: 0 6px 16px rgba(242, 140, 40, 0.3);
 }
 
+.download-btn.secondary {
+  background-color: #007AFF;
+  color: white;
+}
+
+.download-btn.secondary:hover {
+  background-color: #0051D5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+}
+
 .download-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -72,7 +83,10 @@
 }
 
 .btn-icon {
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .hero-info {
@@ -201,6 +215,11 @@
   .download-btn {
     padding: 0.875rem 1.5rem;
     font-size: 1rem;
+  }
+
+  .btn-icon {
+    width: 35px;
+    height: 35px;
   }
 }
 

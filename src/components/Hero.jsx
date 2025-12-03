@@ -2,11 +2,14 @@ import './Hero.css';
 import { useState } from 'react';
 import versionInfoData from '../data/versionInfo.json';
 import appPreview from '../../assets/app_preview.jpeg';
+import androidLogo from '../../assets/android.png';
+import appleLogo from '../../assets/apple logo.png';
 
 const Hero = () => {
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isIOSDownloading, setIsIOSDownloading] = useState(false);
 
-  const handleDownload = async () => {
+  const handleAndroidDownload = async () => {
     try {
       setIsDownloading(true);
       
@@ -51,6 +54,49 @@ const Hero = () => {
     }
   };
 
+  const handleIOSDownload = async () => {
+    try {
+      setIsIOSDownloading(true);
+      
+      // IPA 파일 다운로드
+      const response = await fetch(versionInfoData.iosUrl);
+      
+      if (!response.ok) {
+        throw new Error('파일을 찾을 수 없습니다.');
+      }
+      
+      // Blob으로 변환
+      const blob = await response.blob();
+      
+      // Blob URL 생성
+      const blobUrl = window.URL.createObjectURL(blob);
+      
+      // 동적으로 <a> 태그 생성하여 다운로드
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = `scc_app_v${versionInfoData.currentVersion}.ipa`;
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      
+      // 다운로드 트리거
+      link.click();
+      
+      // 다운로드가 시작될 시간을 주기 위해 지연 후 정리
+      setTimeout(() => {
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+        setIsIOSDownloading(false);
+      }, 200); // 200ms 지연으로 다운로드 시작 시간 확보
+    } catch (error) {
+      console.error('iOS 다운로드 실패:', error);
+      setIsIOSDownloading(false);
+      
+      // 실패 시 직접 링크로 시도
+      alert('다운로드에 실패했습니다. 직접 다운로드를 시도합니다.');
+      window.open(versionInfoData.iosUrl, '_blank');
+    }
+  };
+
   return (
     <section id="download" className="hero">
       <div className="hero-container">
@@ -67,20 +113,28 @@ const Hero = () => {
           </p>
           <div className="hero-buttons">
             <button 
-              onClick={handleDownload} 
-              className="download-btn primary"
+              onClick={handleAndroidDownload} 
+              className="download-btn primary android-btn"
               disabled={isDownloading}
             >
-              <span className="btn-icon">📱</span>
+              <img src={androidLogo} alt="Android" className="btn-icon" />
               {isDownloading ? '다운로드 중...' : 'Android APK 다운로드'}
+            </button>
+            <button 
+              onClick={handleIOSDownload} 
+              className="download-btn secondary ios-btn"
+              disabled={isIOSDownloading}
+            >
+              <img src={appleLogo} alt="iOS" className="btn-icon" />
+              {isIOSDownloading ? '다운로드 중...' : 'iOS IPA 다운로드'}
             </button>
           </div>
           <div className="hero-info">
             <p className="info-text">
-              ⚠️ Android 기기에서만 설치 가능합니다
+              ⚠️ Android: 설치 시 "알 수 없는 소스" 허용이 필요할 수 있습니다
             </p>
             <p className="info-text">
-              설치 시 "알 수 없는 소스" 허용이 필요할 수 있습니다
+              ⚠️ iOS: IPA 파일 다운로드 후 설치 시 신뢰할 수 있는 개발자 설정이 필요할 수 있습니다
             </p>
           </div>
         </div>

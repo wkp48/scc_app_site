@@ -25,7 +25,7 @@ src/
     "version": "1.1.0",           // 버전 번호
     "date": "2024-02-01",         // 릴리즈 날짜 (YYYY-MM-DD)
     "type": "release",            // "release", "beta", "alpha"
-    "changes": [                   // 변경사항 배열
+    "changes": [                   // 변경사항 배열드
       "새로운 기능 추가",
       "버그 수정",
       "성능 개선"
