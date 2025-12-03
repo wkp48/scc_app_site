@@ -10,13 +10,14 @@ const Footer = () => {
             <p className="footer-description">
               세종충북도박문제예방치유센터 공식 모바일 애플리케이션입니다.
             </p>
-          </div>
-          <div className="footer-section">
-            <h4 className="footer-title">문의</h4>
-            <p className="footer-text">
-              앱 관련 문의사항이 있으시면<br />
-              센터로 연락주시기 바랍니다.
-            </p>
+            <div className="footer-contact">
+              <p className="footer-text">
+                <strong>주소:</strong> 충청북도 청주시 흥덕구 경산로 1, 5층
+              </p>
+              <p className="footer-text">
+                <strong>문의:</strong> 042-000-0000
+              </p>
+            </div>
           </div>
           <div className="footer-section">
             <h4 className="footer-title">다운로드</h4>
@@ -30,11 +31,29 @@ const Footer = () => {
               패치노트
             </a>
           </div>
+          <div className="footer-section">
+            <h4 className="footer-title">법적 정보</h4>
+            <a href="#privacy" className="footer-link">
+              개인정보 처리 방침
+            </a>
+            <a href="#terms" className="footer-link">
+              사이트 이용 약관
+            </a>
+            <a href="#cookies" className="footer-link">
+              쿠키 정책
+            </a>
+            <a href="#copyright" className="footer-link">
+              저작권 정보
+            </a>
+          </div>
         </div>
         <div className="footer-bottom">
-          <p className="footer-copyright">
-            © 2024 세종충북도박문제예방치유센터. All rights reserved.
-          </p>
+          <div className="footer-bottom-content">
+            <p className="footer-copyright">
+              © 2025 세종충북도박문제예방치유센터. All rights reserved.
+            </p>
+            
+          </div>
         </div>
       </div>
     </footer>

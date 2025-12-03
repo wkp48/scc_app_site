@@ -91,6 +91,22 @@
   flex-shrink: 0;
 }
 
+.download-btn.ios-btn .btn-icon {
+  width: 70px;
+  height: 70px;
+}
+
+.download-btn.ios-btn {
+  gap: 0.3rem;
+  justify-content: flex-start;
+  padding-left: 1.5rem;
+}
+
+.ios-btn-text {
+  margin-left: auto;
+  margin-right: 2rem;
+}
+
 .hero-info {
   margin-top: 1rem;
   padding: 1rem;
@@ -222,6 +238,22 @@
   .btn-icon {
     width: 35px;
     height: 35px;
+  }
+
+  .download-btn.ios-btn .btn-icon {
+    width: 122px;
+    height: 122px;
+  }
+
+  .download-btn.ios-btn {
+    gap: 0.2rem;
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+  }
+
+  .ios-btn-text {
+    margin-left: auto;
+    margin-right: 1.5rem;
   }
 }
 

@@ -51,15 +51,41 @@
   color: var(--secondary-color);
 }
 
+.footer-contact {
+  margin-top: 0.5rem;
+}
+
+.footer-contact .footer-text {
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+.footer-contact strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
 .footer-bottom {
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
+.footer-bottom-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .footer-copyright {
   font-size: 0.875rem;
   color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.footer-owner {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.5);
   margin: 0;
 }
 

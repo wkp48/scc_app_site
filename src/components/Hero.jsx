@@ -118,7 +118,11 @@ const Hero = () => {
               disabled={isDownloading}
             >
               <img src={androidLogo} alt="Android" className="btn-icon" />
-              {isDownloading ? '다운로드 중...' : 'Android APK 다운로드'}
+              {isDownloading ? '다운로드 중...' : (
+                <>
+                  Android APK<br />다운로드
+                </>
+              )}
             </button>
             <button 
               onClick={handleIOSDownload} 
@@ -126,7 +130,13 @@ const Hero = () => {
               disabled={isIOSDownloading}
             >
               <img src={appleLogo} alt="iOS" className="btn-icon" />
-              {isIOSDownloading ? '다운로드 중...' : 'iOS app 다운로드'}
+              <span className="ios-btn-text">
+                {isIOSDownloading ? '다운로드 중...' : (
+                  <>
+                    IOS APP<br />다운로드
+                  </>
+                )}
+              </span>
             </button>
           </div>
           <div className="hero-info">
