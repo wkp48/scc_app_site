@@ -1,20 +1,21 @@
-# 세종충북도박문제예방치유센터 애플리케이션 다운로드 페이지
+# 세종충북도박문제예방치유센터 앱 다운로드 페이지
 
-세종충북도박문제예방치유센터 애플리케이션의 공식 다운로드 페이지입니다.
+세종충북도박문제예방치유센터 모바일 앱을 배포하기 위한 반응형 웹사이트입니다.
 
 ## 기능
 
-- 📱 버전 정보 표시
-- 📥 안드로이드 및 iOS 다운로드 링크
-- 📝 패치노트 및 업데이트 내역
-- 📱 반응형 디자인 (모바일, 태블릿, 데스크톱 지원)
+- 📱 Android APK 다운로드
+- 📋 버전 정보 표시
+- 📝 패치노트 관리
+- 📱 완전한 반응형 디자인 (모바일, 태블릿, 데스크톱)
 
-## 설치 및 실행
+## 기술 스택
 
-### 필수 요구사항
+- React 18
+- Vite
+- CSS3 (반응형 디자인)
 
-- Node.js 16 이상
-- npm 또는 yarn
+## 시작하기
 
 ### 설치
 
@@ -28,7 +29,7 @@ npm install
 npm run dev
 ```
 
-브라우저에서 `http://localhost:5173`을 열어 확인하세요.
+개발 서버는 `http://localhost:5173`에서 실행됩니다.
 
 ### 프로덕션 빌드
 
@@ -38,7 +39,7 @@ npm run build
 
 빌드된 파일은 `dist` 폴더에 생성됩니다.
 
-### 빌드 미리보기
+### 미리보기
 
 ```bash
 npm run preview
@@ -46,95 +47,121 @@ npm run preview
 
 ## 설정
 
-### 다운로드 링크 설정
+### 데이터 관리 방식
 
-APK 파일과 iOS App Store 링크를 설정하는 방법은 두 가지가 있습니다:
+패치노트와 버전 정보는 **JSON 파일로 분리**되어 관리됩니다. 코드를 수정하지 않고 JSON 파일만 수정하면 됩니다.
 
-#### 방법 1: 환경 변수 사용 (권장)
+📖 **자세한 내용은 [DATA_MANAGEMENT.md](./DATA_MANAGEMENT.md) 문서를 참고하세요.**
 
-프로젝트 루트에 `.env` 파일을 생성하고 다음 내용을 추가하세요:
+### APK 파일 추가
 
-```env
-VITE_APK_URL=https://your-server.com/downloads/scc_app.apk
-VITE_IOS_URL=https://apps.apple.com/app/id123456789
+1. APK 파일을 `public/downloads/scc_app.apk` 경로에 배치하세요.
+2. 또는 `src/data/versionInfo.json` 파일에서 `apkUrl`을 수정하세요.
+
+### 버전 정보 업데이트
+
+`src/data/versionInfo.json` 파일을 열어서 수정하세요:
+
+```json
+{
+  "currentVersion": "1.0.0",
+  "releaseDate": "2024-01-15",
+  "fileSize": "25.3 MB",
+  "minAndroidVersion": "Android 6.0 (API 23) 이상",
+  "apkUrl": "/downloads/scc_app.apk",
+  "requirements": [
+    "인터넷 연결 필요",
+    "최소 100MB 이상의 저장 공간",
+    "Android 6.0 이상"
+  ]
+}
 ```
 
-#### 방법 2: 코드에서 직접 수정
+### 패치노트 업데이트
 
-`src/components/DownloadSection.jsx` 파일의 `APK_URL`과 `IOS_STORE_URL` 변수를 직접 수정하세요.
+`src/data/patchNotes.json` 파일을 열어서 새 패치노트를 **배열 맨 앞에** 추가하세요:
 
-#### APK 파일 호스팅 방법
+```json
+[
+  {
+    "version": "1.1.0",
+    "date": "2024-02-01",
+    "type": "release",
+    "changes": [
+      "새로운 기능 추가",
+      "버그 수정",
+      "성능 개선"
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "2024-01-15",
+    "type": "release",
+    "changes": [
+      "초기 릴리즈"
+    ]
+  }
+]
+```
 
-APK 파일은 다음 중 하나의 방법으로 호스팅할 수 있습니다:
-
-1. **웹 서버**: 자체 웹 서버에 APK 파일 업로드
-2. **GitHub Releases**: GitHub 저장소의 Releases에 APK 업로드
-   - 예: `https://github.com/username/repo/releases/download/v1.0.0/scc_app.apk`
-3. **클라우드 스토리지**: AWS S3, Google Cloud Storage 등
-4. **파일 호스팅 서비스**: Dropbox, Google Drive (공개 링크)
-
-### 버전 정보 수정
-
-`src/components/VersionInfo.jsx` 파일에서 버전 정보를 수정하세요.
-
-### 패치노트 추가
-
-`src/components/PatchNotes.jsx` 파일의 `patchNotes` 배열에 새로운 패치노트를 추가하세요.
+**주의사항:**
+- 가장 최신 버전이 배열의 첫 번째에 위치해야 합니다
+- `type`은 `"release"`, `"beta"`, `"alpha"` 중 하나여야 합니다
 
 ## 배포
 
-### 방법 1: Vercel 배포 (권장 - 가장 간단)
+### Vercel에 배포
 
-1. [Vercel](https://vercel.com)에 가입/로그인
-2. "New Project" 클릭
-3. GitHub 저장소 선택 (`wkp48/scc_app_site`)
-4. 프로젝트 설정:
-   - Framework Preset: Vite
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-5. "Deploy" 클릭
+1. [Vercel](https://vercel.com)에 가입하고 프로젝트를 연결합니다.
+2. GitHub 저장소에 코드를 푸시합니다.
+3. Vercel이 자동으로 빌드하고 배포합니다.
 
-배포가 완료되면 자동으로 URL이 생성됩니다 (예: `https://scc-app-site.vercel.app`)
+### 다른 플랫폼에 배포
 
-**장점:**
-- 무료
-- 자동 배포 (GitHub push 시 자동 업데이트)
-- HTTPS 자동 설정
-- 매우 빠른 배포 속도
+`npm run build` 명령어로 빌드한 후, `dist` 폴더의 내용을 웹 호스팅 서비스에 업로드하세요.
 
-### 방법 2: GitHub Pages 배포
+## 디렉토리 구조
 
-1. GitHub 저장소 설정에서 Pages 활성화:
-   - Settings → Pages
-   - Source: GitHub Actions 선택
+```
+scc_page/
+├── public/
+│   └── downloads/
+│       └── scc_app.apk  # APK 파일 위치
+├── src/
+│   ├── data/
+│   │   ├── patchNotes.json   # 패치노트 데이터 ⭐
+│   │   └── versionInfo.json  # 버전 정보 데이터 ⭐
+│   ├── components/
+│   │   ├── Header.jsx       # 헤더 컴포넌트
+│   │   ├── Hero.jsx         # 히어로 섹션 (다운로드)
+│   │   ├── VersionInfo.jsx  # 버전 정보
+│   │   ├── PatchNotes.jsx   # 패치노트
+│   │   └── Footer.jsx       # 푸터
+│   ├── App.jsx
+│   ├── App.css
+│   ├── main.jsx
+│   └── index.css
+├── assets/
+│   └── logo.png
+├── package.json
+├── vite.config.js
+├── README.md
+└── DATA_MANAGEMENT.md  # 데이터 관리 가이드
+```
 
-2. 코드를 GitHub에 push하면 자동으로 배포됩니다:
-   ```bash
-   git add .
-   git commit -m "배포 설정 추가"
-   git push origin main
-   ```
+## 커스터마이징
 
-3. 배포 완료 후 사이트 주소:
-   - `https://wkp48.github.io/scc_app_site/`
+### 색상 변경
 
-**참고:** GitHub Pages 사용 시 `vite.config.js`의 `base`를 `/scc_app_site/`로 변경해야 할 수 있습니다.
+`src/index.css` 파일의 CSS 변수를 수정하여 색상을 변경할 수 있습니다:
 
-### 방법 3: Netlify 배포
-
-1. [Netlify](https://www.netlify.com)에 가입/로그인
-2. "Add new site" → "Import an existing project"
-3. GitHub 저장소 선택
-4. 빌드 설정:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-5. "Deploy site" 클릭
-
-## 기술 스택
-
-- React 18
-- Vite
-- CSS3 (반응형 디자인)
+```css
+:root {
+  --primary-color: #F28C28;  /* 주 색상 (오렌지) */
+  --secondary-color: #4ECDC4;  /* 보조 색상 (청록) */
+  /* ... */
+}
+```
 
 ## 라이선스
 

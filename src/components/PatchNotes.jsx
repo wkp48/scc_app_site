@@ -1,88 +1,70 @@
-import React, { useState } from 'react'
-import './PatchNotes.css'
+import './PatchNotes.css';
+import { useState } from 'react';
+import patchNotesData from '../data/patchNotes.json';
 
 const PatchNotes = () => {
-  const [expandedVersion, setExpandedVersion] = useState('1.0.0')
+  const [patchNotes] = useState(patchNotesData);
 
-  const patchNotes = [
-    {
-      version: '1.0.0',
-      date: '2024.01.15',
-      changes: [
-        '세종충북도박문제예방치유센터 애플리케이션 첫 출시',
-        '사용자 로그인 및 회원가입 기능',
-        '도박문제 상담 신청 기능',
-        '치유 프로그램 안내 및 신청',
-        '공지사항 및 이벤트 확인',
-        '마이페이지 기능',
-      ],
-      type: 'major'
-    },
-    // 향후 패치노트 추가 예시
-    // {
-    //   version: '1.1.0',
-    //   date: '2024.02.01',
-    //   changes: [
-    //     '푸시 알림 기능 추가',
-    //     '상담 일정 관리 기능 개선',
-    //     'UI/UX 개선',
-    //   ],
-    //   type: 'minor'
-    // },
-  ]
+  const getVersionTypeLabel = (type) => {
+    switch (type) {
+      case 'release':
+        return '릴리즈';
+      case 'beta':
+        return '베타';
+      case 'alpha':
+        return '알파';
+      default:
+        return '업데이트';
+    }
+  };
 
-  const toggleVersion = (version) => {
-    setExpandedVersion(expandedVersion === version ? null : version)
-  }
+  const getVersionTypeClass = (type) => {
+    switch (type) {
+      case 'release':
+        return 'type-release';
+      case 'beta':
+        return 'type-beta';
+      case 'alpha':
+        return 'type-alpha';
+      default:
+        return '';
+    }
+  };
 
   return (
-    <section className="patch-notes">
-      <div className="patch-container">
-        <h2 className="patch-title">패치노트</h2>
-        <p className="patch-subtitle">최신 업데이트 내역을 확인하세요</p>
-
-        <div className="patch-list">
+    <section id="patchnotes" className="patch-notes">
+      <div className="patch-notes-container">
+        <h2 className="section-title">패치노트</h2>
+        <div className="patch-notes-list">
           {patchNotes.map((note, index) => (
-            <div 
-              key={index} 
-              className={`patch-item ${expandedVersion === note.version ? 'expanded' : ''}`}
-            >
-              <div 
-                className="patch-header"
-                onClick={() => toggleVersion(note.version)}
-              >
-                <div className="patch-header-left">
-                  <span className={`patch-badge ${note.type}`}>
-                    {note.type === 'major' ? '주요 업데이트' : '업데이트'}
+            <div key={index} className="patch-note-card">
+              <div className="patch-note-header">
+                <div className="patch-note-version">
+                  <span className={`version-type ${getVersionTypeClass(note.type)}`}>
+                    {getVersionTypeLabel(note.type)}
                   </span>
-                  <div className="patch-version-info">
-                    <span className="patch-version">v{note.version}</span>
-                    <span className="patch-date">{note.date}</span>
-                  </div>
+                  <h3 className="patch-version-number">v{note.version}</h3>
                 </div>
-                <div className="patch-toggle">
-                  {expandedVersion === note.version ? '▼' : '▶'}
-                </div>
+                <span className="patch-date">{note.date}</span>
               </div>
-              
-              {expandedVersion === note.version && (
-                <div className="patch-content">
-                  <ul className="patch-changes">
-                    {note.changes.map((change, changeIndex) => (
-                      <li key={changeIndex} className="patch-change-item">
-                        {change}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <div className="patch-note-content">
+                <h4 className="changes-title">변경사항</h4>
+                <ul className="changes-list">
+                  {note.changes.map((change, changeIndex) => (
+                    <li key={changeIndex} className="change-item">
+                      <span className="change-icon">•</span>
+                      {change}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PatchNotes
+export default PatchNotes;
 

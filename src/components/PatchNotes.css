@@ -1,200 +1,158 @@
 .patch-notes {
-  padding: 3rem 0;
+  padding: 4rem 2rem;
+  background-color: var(--bg-light);
 }
 
-.patch-container {
+.patch-notes-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
-.patch-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: white;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.patch-subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.patch-list {
+.patch-notes-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 2rem;
 }
 
-.patch-item {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+.patch-note-card {
+  background-color: var(--bg-white);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid var(--primary-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.patch-item:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+.patch-note-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.patch-header {
-  padding: 1.5rem 2rem;
+.patch-note-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  user-select: none;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.patch-header-left {
+.patch-note-version {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  flex: 1;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.patch-badge {
-  padding: 0.4rem 1rem;
+.version-type {
+  padding: 0.375rem 0.875rem;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  white-space: nowrap;
 }
 
-.patch-badge.major {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+.version-type.type-release {
+  background-color: var(--primary-color);
   color: white;
 }
 
-.patch-badge.minor {
-  background: #e0e0e0;
-  color: #666;
+.version-type.type-beta {
+  background-color: var(--secondary-color);
+  color: white;
 }
 
-.patch-version-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+.version-type.type-alpha {
+  background-color: #6c757d;
+  color: white;
 }
 
-.patch-version {
-  font-size: 1.3rem;
+.patch-version-number {
+  font-size: 1.75rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-dark);
+  margin: 0;
 }
 
 .patch-date {
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 1rem;
+  color: var(--text-light);
+  font-weight: 500;
 }
 
-.patch-toggle {
-  font-size: 1.2rem;
-  color: #999;
-  transition: transform 0.3s ease;
-}
-
-.patch-item.expanded .patch-toggle {
-  transform: rotate(90deg);
-}
-
-.patch-content {
-  padding: 0 2rem 1.5rem 2rem;
-  border-top: 1px solid #eee;
-  animation: slideDown 0.3s ease-out;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-  }
-}
-
-.patch-changes {
-  list-style: none;
+.patch-note-content {
   padding-top: 1rem;
 }
 
-.patch-change-item {
-  padding: 0.8rem 0;
-  padding-left: 1.5rem;
-  position: relative;
-  color: #555;
+.changes-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.changes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.change-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: var(--bg-light);
+  border-radius: 6px;
   line-height: 1.6;
-  font-size: 0.95rem;
 }
 
-.patch-change-item::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: bold;
+.change-icon {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
 }
 
+/* 모바일 반응형 */
 @media (max-width: 768px) {
-  .patch-title {
-    font-size: 2rem;
+  .patch-notes {
+    padding: 3rem 1rem;
   }
-  
-  .patch-subtitle {
-    font-size: 1rem;
+
+  .patch-note-card {
+    padding: 2rem;
   }
-  
-  .patch-header {
-    padding: 1.2rem 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .patch-header-left {
+
+  .patch-note-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    width: 100%;
   }
-  
-  .patch-version-info {
-    width: 100%;
-  }
-  
-  .patch-toggle {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.2rem;
-  }
-  
-  .patch-content {
-    padding: 0 1.5rem 1.2rem 1.5rem;
-  }
-  
-  .patch-container {
-    padding: 0 1rem;
+
+  .patch-version-number {
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
-  .patch-title {
-    font-size: 1.6rem;
+  .patch-notes {
+    padding: 2rem 1rem;
   }
-  
-  .patch-version {
-    font-size: 1.1rem;
+
+  .patch-note-card {
+    padding: 1.5rem;
   }
-  
-  .patch-change-item {
-    font-size: 0.9rem;
-    padding-left: 1.2rem;
+
+  .patch-version-number {
+    font-size: 1.25rem;
+  }
+
+  .version-type {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
   }
 }
 
