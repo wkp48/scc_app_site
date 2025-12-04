@@ -133,7 +133,7 @@
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border-radius: 30px;
   padding: 15px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   position: relative;
 }
 
@@ -211,6 +211,18 @@
     justify-content: center;
   }
 
+  .download-btn.ios-btn {
+    gap: 0.5rem;
+    justify-content: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .ios-btn-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .phone-mockup {
     width: 200px;
     height: 400px;
@@ -241,19 +253,20 @@
   }
 
   .download-btn.ios-btn .btn-icon {
-    width: 122px;
-    height: 122px;
+    width: 35px;
+    height: 35px;
   }
 
   .download-btn.ios-btn {
-    gap: 0.2rem;
-    justify-content: flex-start;
-    padding-left: 0.5rem;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
   }
 
   .ios-btn-text {
-    margin-left: auto;
-    margin-right: 1.5rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
