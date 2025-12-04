@@ -15,7 +15,7 @@ const Footer = () => {
                 <strong>주소:</strong> 충청북도 청주시 흥덕구 경산로 1, 5층
               </p>
               <p className="footer-text">
-                <strong>문의:</strong> 042-000-0000
+                <strong>문의:</strong> 043-275-0051
               </p>
             </div>
           </div>

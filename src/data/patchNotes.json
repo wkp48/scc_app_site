@@ -1,5 +1,13 @@
 [
   {
+    "version": "0.9.1",
+    "date": "2025-12-04",
+    "type": "beta",
+    "changes": [
+      "관련 ip수정 및 추가"
+    ]
+  },
+  {
     "version": "0.9.0",
     "date": "2025-12-03",
     "type": "beta",
