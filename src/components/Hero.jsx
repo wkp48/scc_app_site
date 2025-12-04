@@ -120,7 +120,7 @@ const Hero = () => {
               <img src={androidLogo} alt="Android" className="btn-icon" />
               {isDownloading ? '다운로드 중...' : (
                 <>
-                  Android APK<br />다운로드
+                  Android Apk<br />다운로드
                 </>
               )}
             </button>
@@ -129,11 +129,11 @@ const Hero = () => {
               className="download-btn secondary ios-btn"
               disabled={isIOSDownloading}
             >
-              <img src={appleLogo} alt="iOS" className="btn-icon" />
+              <img src={appleLogo} alt="Ios" className="btn-icon" />
               <span className="ios-btn-text">
                 {isIOSDownloading ? '다운로드 중...' : (
                   <>
-                    IOS APP<br />다운로드
+                    Ios App<br />다운로드
                   </>
                 )}
               </span>
@@ -144,7 +144,7 @@ const Hero = () => {
               ⚠️ Android: 설치 시 "알 수 없는 소스" 허용이 필요할 수 있습니다
             </p>
             <p className="info-text">
-              ⚠️ iOS: app 파일 다운로드 후 설치 시 신뢰할 수 있는 개발자 설정이 필요할 수 있습니다
+              ⚠️ Ios: app 파일 다운로드 후 설치 시 신뢰할 수 있는 개발자 설정이 필요할 수 있습니다
             </p>
           </div>
         </div>
